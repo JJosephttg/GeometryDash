@@ -1,0 +1,41 @@
+﻿<Window x:Class="GeometryDash.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GeometryDash"
+        xmlns:views="clr-namespace:GeometryDash.Views"
+        xmlns:viewmodels="clr-namespace:GeometryDash.ViewModels"
+        mc:Ignorable="d"
+        Title="Geometry Dash" Height="450" Width="700" ResizeMode="NoResize">
+    <Window.Resources>
+        <DataTemplate x:Key="TitleView" DataType="{x:Type viewmodels:SelectorViewModel}">
+            <views:TitleView />
+        </DataTemplate>
+
+        <DataTemplate x:Key="GameView" DataType="{x:Type viewmodels:SelectorViewModel}">
+            <views:GameView />
+        </DataTemplate>
+
+        <DataTemplate x:Key="GameOverView" DataType="{x:Type viewmodels:SelectorViewModel}">
+            <views:GameOverView />
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <ContentControl x:Name="PageContent" Content="{Binding}">
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Setter Property="ContentTemplate" Value="{StaticResource TitleView}"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding SwitchView}" Value="1">
+                            <Setter Property="ContentTemplate" Value="{StaticResource GameView}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SwitchView}" Value="2">
+                            <Setter Property="ContentTemplate" Value="{StaticResource GameOverView}"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+    </Grid>
+</Window>

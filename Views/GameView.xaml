@@ -1,0 +1,17 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GeometryDash.Views"
+             xmlns:GeometryDash="clr-namespace:GeometryDash" x:Class="GeometryDash.Views.GameView">
+    <Grid>
+        <Canvas x:Name="MainCanvas" Background="#FF0EC4FF">
+            <Border Canvas.Top="15" Canvas.Left="15" Background="Red" VerticalAlignment="Center" CornerRadius="10" BorderBrush="White" BorderThickness="4">
+                <Button Foreground="White" Content=" Quit Game " Command="{Binding QuitGameCommand}" Height="35" Background="Transparent" BorderBrush="{x:Null}"/>
+            </Border>
+            <TextBlock Text="{Binding Counter}" Canvas.Right="25" Canvas.Top="10" FontSize="36" Foreground="White"/>
+            <Canvas x:Name="ObstacleCanvas" Width="{Binding ActualWidth, ElementName=MainCanvas}" Height="{Binding ActualHeight, ElementName=MainCanvas}" />
+        </Canvas>
+    </Grid>
+</UserControl>
